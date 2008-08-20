@@ -157,4 +157,3 @@ class Piece_Unity_Plugin_Interceptor_ProxyBasePath extends Piece_Unity_Plugin_Co
  * indent-tabs-mode: nil
  * End:
  */
-?>

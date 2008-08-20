@@ -171,4 +171,3 @@ class Piece_Unity_Plugin_Interceptor_ProxyBasePathTestCase extends PHPUnit_TestC
  * indent-tabs-mode: nil
  * End:
  */
-?>
