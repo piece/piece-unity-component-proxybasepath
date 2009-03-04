@@ -4,7 +4,7 @@
 /**
  * PHP versions 4 and 5
  *
- * Copyright (c) 2006-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>,
+ * Copyright (c) 2006-2007, 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>,
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
  *
  * @package    Piece_Unity
  * @subpackage Piece_Unity_Component_ProxyBasePath
- * @copyright  2006-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2006-2007, 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
  * @version    SVN: $Id$
  * @since      File available since Release 1.0.0
@@ -49,7 +49,7 @@ require_once 'Piece/Unity/Plugin/Common.php';
  * servers.
  *
  * The base path and the script name are both relative paths since they are
- * based on SCRIPT_NAME environment variable. The following is a example of
+ * based on REQUEST_URI environment variable. The following is a example of
  * a context change when 'proxyPath' configuration point is set to '/foo' in
  * Configurator_Env plug-in.
  *
@@ -66,7 +66,7 @@ require_once 'Piece/Unity/Plugin/Common.php';
  *
  * @package    Piece_Unity
  * @subpackage Piece_Unity_Component_ProxyBasePath
- * @copyright  2006-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2006-2007, 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
  * @version    Release: @package_version@
  * @since      Class available since Release 1.0.0

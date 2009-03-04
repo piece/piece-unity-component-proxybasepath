@@ -4,7 +4,7 @@
 /**
  * PHP versions 4 and 5
  *
- * Copyright (c) 2006-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>,
+ * Copyright (c) 2006-2007, 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>,
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
  *
  * @package    Piece_Unity
  * @subpackage Piece_Unity_Component_ProxyBasePath
- * @copyright  2006-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2006-2007, 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
  * @version    SVN: $Id$
  * @since      File available since Release 1.0.0
@@ -50,7 +50,7 @@ require_once 'Piece/Unity/Config.php';
  *
  * @package    Piece_Unity
  * @subpackage Piece_Unity_Component_ProxyBasePath
- * @copyright  2006-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2006-2007, 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
  * @version    Release: @package_version@
  * @since      Class available since Release 1.0.0
@@ -84,8 +84,8 @@ class Piece_Unity_Plugin_Interceptor_ProxyBasePathTestCase extends PHPUnit_TestC
 
     function testProxy()
     {
-        $previousScriptName = $_SERVER['SCRIPT_NAME'];
-        $_SERVER['SCRIPT_NAME'] = '/bar/baz.php';
+        $previousScriptName = @$_SERVER['REQUEST_URI'];
+        $_SERVER['REQUEST_URI'] = '/bar/baz.php';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '1.2.3.4';
         $previousSessionCookiePath = ini_get('session.cookie_path');
         ini_set('session.cookie_path', '/bar');
@@ -104,13 +104,13 @@ class Piece_Unity_Plugin_Interceptor_ProxyBasePathTestCase extends PHPUnit_TestC
 
         ini_set('session.cookie_path', $previousSessionCookiePath);
         unset($_SERVER['HTTP_X_FORWARDED_FOR']);
-        $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        $_SERVER['REQUEST_URI'] = $previousScriptName;
     }
 
     function testNonProxy()
     {
-        $previousScriptName = $_SERVER['SCRIPT_NAME'];
-        $_SERVER['SCRIPT_NAME'] = '/bar/baz.php';
+        $previousScriptName = $_SERVER['REQUEST_URI'];
+        $_SERVER['REQUEST_URI'] = '/bar/baz.php';
 
         $config = &new Piece_Unity_Config();
         $context = &Piece_Unity_Context::singleton();
@@ -123,7 +123,7 @@ class Piece_Unity_Plugin_Interceptor_ProxyBasePathTestCase extends PHPUnit_TestC
         $this->assertEquals('/bar', $context->getBasePath());
         $this->assertEquals('/bar/baz.php', $context->getScriptName());
 
-        $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        $_SERVER['REQUEST_URI'] = $previousScriptName;
     }
 
     function testAdjustingSessionCookiePathToOff()
